@@ -1,71 +1,71 @@
-import { makeStyles } from "tss-react/mui";
-import { ILink } from "../../interfaces/appdata";
+import { makeStyles } from 'tss-react/mui';
+import { ILink } from '../../interfaces/appdata';
 import {
-  Card,
-  CardContent,
-  CardActionArea,
-  CardMedia,
-  Typography,
-  Box,
-} from "@mui/material";
-import { useCallback } from "react";
+    Card,
+    CardContent,
+    CardActionArea,
+    CardMedia,
+    Typography,
+    Box,
+} from '@mui/material';
+import { useCallback } from 'react';
 
 type IProps = ILink;
 
 const useStyles = makeStyles()(() => ({
-  cardAction: {
-    height: "100%",
-  },
-
-  iconContainer: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "center",
-    padding: "16px 8px 0 8px",
-
-    "& > img": {
-      width: "auto",
+    cardAction: {
+        height: '100%',
     },
-  },
+
+    iconContainer: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        padding: '16px 8px 0 8px',
+
+        '& > img': {
+            width: 'auto',
+        },
+    },
 }));
 
 function Link(props: IProps) {
-  const { name, icon, url } = props;
-  const { classes } = useStyles();
+    const { name, icon, url } = props;
+    const { classes } = useStyles();
 
-  const onMouseDown = useCallback(
-    (event: React.MouseEvent) => {
-      console.log(event);
-      console.log(url);
-    },
-    [url],
-  );
+    const onMouseDown = useCallback(
+        (event: React.MouseEvent) => {
+            console.log(event);
+            console.log(url);
+        },
+        [url],
+    );
 
-  return (
-    <Card raised={true}>
-      <CardActionArea
-        component="a"
-        href={url}
-        className={classes.cardAction}
-        onMouseDown={onMouseDown}
-      >
-        {icon && (
-          <Box className={classes.iconContainer}>
-            <CardMedia
-              component="img"
-              // height={32}
-              // width={32}
-              alt={`${name} icon`}
-              image={icon}
-            />
-          </Box>
-        )}
-        <CardContent>
-          <Typography component="h3">{name}</Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-  );
+    return (
+        <Card raised={true}>
+            <CardActionArea
+                component="a"
+                href={url}
+                className={classes.cardAction}
+                onMouseDown={onMouseDown}
+            >
+                {icon && (
+                    <Box className={classes.iconContainer}>
+                        <CardMedia
+                            component="img"
+                            // height={32}
+                            // width={32}
+                            alt={`${name} icon`}
+                            image={icon}
+                        />
+                    </Box>
+                )}
+                <CardContent>
+                    <Typography component="h3">{name}</Typography>
+                </CardContent>
+            </CardActionArea>
+        </Card>
+    );
 }
 
 export default Link;

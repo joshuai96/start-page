@@ -40,7 +40,10 @@ export default tseslint.config(
             // 'react/jsx-uses-react': 'error',
             // 'react/jsx-uses-vars': 'error',
             ...reactHooks.configs.recommended.rules,
-            "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+            "react-refresh/only-export-components": [
+                "warn",
+                { allowConstantExport: true },
+            ],
             ...reactX.configs["recommended-typescript"].rules,
             ...reactDom.configs.recommended.rules,
         },
