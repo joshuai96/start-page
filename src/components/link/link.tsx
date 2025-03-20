@@ -42,26 +42,27 @@ function Link(props: IProps) {
     );
 
     return (
-        <Card raised={true}>
+        <Card raised>
             <CardActionArea
-                component="a"
-                href={url}
-                className={classes.cardAction}
-                onMouseDown={onMouseDown}
+                className = { classes.cardAction }
+                component = "a"
+                href = { url }
+                onMouseDown = { onMouseDown }
             >
-                {icon && (
-                    <Box className={classes.iconContainer}>
+                {icon ? (
+                    <Box className = { classes.iconContainer }>
                         <CardMedia
-                            component="img"
-                            // height={32}
-                            // width={32}
-                            alt={`${name} icon`}
-                            image={icon}
+                            alt = { `${name} icon` }
+                            component = "img"
+                            image = { icon }
                         />
                     </Box>
-                )}
+                ) : undefined}
+
                 <CardContent>
-                    <Typography component="h3">{name}</Typography>
+                    <Typography component = "h3">
+                        { name }
+                    </Typography>
                 </CardContent>
             </CardActionArea>
         </Card>

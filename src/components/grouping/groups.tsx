@@ -13,10 +13,10 @@ function Groups(props: IProps) {
     return groups.map((group) => {
         return (
             <Group
-                name={group.name}
-                order={group.order}
-                links={group.links}
-                key={group.name.toLowerCase()}
+                key = { group.name.toLowerCase() }
+                links = { group.links }
+                name = { group.name }
+                order = { group.order }
             />
         );
     });

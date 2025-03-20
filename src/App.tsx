@@ -86,26 +86,31 @@ function App() {
     });
 
     return (
-        <ThemeProvider theme={nord}>
+        <ThemeProvider theme = { nord }>
             <CssBaseline />
 
-            <AppBar position="static">
+            <AppBar position = "static">
                 <Toolbar>
                     <IconButton
-                        size="large"
-                        edge="start"
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
+                        aria-label = "menu"
+                        edge = "start"
+                        size = "large"
+                        sx = { { mr: 2 } }
                     >
                         <MenuIcon />
                     </IconButton>
 
-                    <Typography component="h2">{meta.title}</Typography>
+                    <Typography component = "h2">
+                        {meta.title}
+                    </Typography>
                 </Toolbar>
             </AppBar>
 
-            <Container className={classes.groups} maxWidth="xl">
-                <Groups groups={data.groups} />
+            <Container
+                className = { classes.groups }
+                maxWidth = "xl"
+            >
+                <Groups groups = { data.groups } />
             </Container>
         </ThemeProvider>
     );

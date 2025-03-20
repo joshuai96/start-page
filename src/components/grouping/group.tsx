@@ -29,29 +29,32 @@ function Group(props: IProps) {
     return (
         <Accordion defaultExpanded>
             <AccordionSummary
-                aria-controls={`${groupName}-content`}
-                expandIcon={<ExpandMoreIcon />}
-                id={`${groupName}-header`}
+                aria-controls = { `${groupName}-content` }
+                expandIcon = { <ExpandMoreIcon /> }
+                id = { `${groupName}-header` }
             >
-                <Typography component="h2">{name}</Typography>
+                <Typography component = "h2">
+                    {name}
+                </Typography>
             </AccordionSummary>
+
             <AccordionDetails>
                 <Stack
-                    direction="row"
+                    className = { classes.groupStack }
+                    direction = "row"
+                    spacing = { 5 }
                     useFlexGap
-                    className={classes.groupStack}
-                    spacing={5}
                 >
                     {links.map((link) => {
                         const linkName = link.name.toLowerCase();
                         return (
                             <Link
-                                key={`${groupName}-${linkName}`}
-                                name={link.name}
-                                order={link.order}
-                                url={link.url}
-                                icon={link.icon}
-                            ></Link>
+                                icon = { link.icon }
+                                key = { `${groupName}-${linkName}` }
+                                name = { link.name }
+                                order = { link.order }
+                                url = { link.url }
+                            />
                         );
                     })}
                 </Stack>
