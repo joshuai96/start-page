@@ -37,8 +37,12 @@ export default tseslint.config(
         },
         rules: {
             ...react.configs.all.rules,
-            // 'react/jsx-uses-react': 'error',
-            // 'react/jsx-uses-vars': 'error',
+            "react/react-in-jsx-scope": "off",
+            "react/jsx-filename-extension": "off",
+            "react/jsx-max-depth": "off",
+            "react/forbid-component-props": "off",
+            "react/jsx-equals-spacing": [2, "always"],
+            "react/jsx-curly-spacing": [2 , {"when": "always"}],
             ...reactHooks.configs.recommended.rules,
             "react-refresh/only-export-components": [
                 "warn",
