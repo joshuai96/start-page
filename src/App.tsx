@@ -8,8 +8,6 @@ import {
     Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import testData from './assets/data.json';
-import { IAppData } from './interfaces/appdata';
 import Groups from './components/grouping/groups';
 import { makeStyles } from 'tss-react/mui';
 import {
@@ -26,7 +24,9 @@ import {
     nord8,
     nord9,
 } from './modules/nord';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import LocalStorage from './modules/local-storage';
+import { init as i18nInit } from './modules/i18n';
 
 const nord = createTheme({
     palette: {
@@ -63,7 +63,7 @@ const nord = createTheme({
     typography: {
         fontSize: 16,
         body1: {
-            fontSize: '1.8rem',
+            // fontSize: '1.8rem',
         },
     },
     shape: {
@@ -78,12 +78,25 @@ const useStyles = makeStyles()(() => ({
 }));
 
 function App() {
+    const localStorage = new LocalStorage();
+    i18nInit();
+
     const { classes } = useStyles();
-    const { meta, data } = testData as IAppData;
+    const [ state, setState ] = useState(localStorage.load());
 
     useEffect(() => {
-        document.title = meta.title;
+        document.title = state.meta.title;
     });
+
+    const createGroup = useCallback((name: string, order: number) => {
+        const newState = state;
+        newState.data.groups.push({
+            name: name,
+            order: order,
+            links: []
+        });
+        setState(newState);
+    }, [ state, setState ]);
 
     return (
         <ThemeProvider theme = { nord }>
@@ -101,7 +114,7 @@ function App() {
                     </IconButton>
 
                     <Typography component = "h2">
-                        {meta.title}
+                        {state.meta.title}
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -110,7 +123,10 @@ function App() {
                 className = { classes.groups }
                 maxWidth = "xl"
             >
-                <Groups groups = { data.groups } />
+                <Groups
+                    createGroup = { createGroup }
+                    groups = { state.data.groups }
+                />
             </Container>
         </ThemeProvider>
     );

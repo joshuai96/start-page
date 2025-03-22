@@ -13,6 +13,9 @@ import { makeStyles } from 'tss-react/mui';
 type IProps = IGroup;
 
 const useStyles = makeStyles()(() => ({
+    groupAccordion: {
+        width: '100%'
+    },
     groupStack: {
         flexWrap: 'wrap',
     },
@@ -27,7 +30,10 @@ function Group(props: IProps) {
     links.sort((a, b) => a.order - b.order);
 
     return (
-        <Accordion defaultExpanded>
+        <Accordion
+            className = { classes.groupAccordion }
+            defaultExpanded
+        >
             <AccordionSummary
                 aria-controls = { `${groupName}-content` }
                 expandIcon = { <ExpandMoreIcon /> }
