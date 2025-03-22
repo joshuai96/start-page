@@ -61,7 +61,7 @@ function Link(props: IProps) {
 
                 <CardContent>
                     <Typography component = "h3">
-                        { name }
+                        {name}
                     </Typography>
                 </CardContent>
             </CardActionArea>

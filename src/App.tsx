@@ -82,21 +82,24 @@ function App() {
     i18nInit();
 
     const { classes } = useStyles();
-    const [ state, setState ] = useState(localStorage.load());
+    const [state, setState] = useState(localStorage.load());
 
     useEffect(() => {
         document.title = state.meta.title;
     });
 
-    const createGroup = useCallback((name: string, order: number) => {
-        const newState = state;
-        newState.data.groups.push({
-            name: name,
-            order: order,
-            links: []
-        });
-        setState(newState);
-    }, [ state, setState ]);
+    const createGroup = useCallback(
+        (name: string, order: number) => {
+            const newState = state;
+            newState.data.groups.push({
+                name: name,
+                order: order,
+                links: [],
+            });
+            setState(newState);
+        },
+        [state, setState],
+    );
 
     return (
         <ThemeProvider theme = { nord }>

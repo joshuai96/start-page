@@ -1,4 +1,4 @@
-import { IAppData } from "../interfaces/appdata"
+import { IAppData } from '../interfaces/appdata';
 
 class LocalStorage {
     storageKey = 'app-data';
@@ -12,22 +12,22 @@ class LocalStorage {
     }
 
     load(): IAppData {
-        const rawData = localStorage.getItem(this.storageKey)
+        const rawData = localStorage.getItem(this.storageKey);
 
         if (!rawData) {
             return {
                 meta: {
-                    title: "start-page",
-                    version: 1
+                    title: 'start-page',
+                    version: 1,
                 },
                 data: {
-                    groups: []
-                }
-            }
+                    groups: [],
+                },
+            };
         }
 
-        return JSON.parse(rawData) as IAppData
+        return JSON.parse(rawData) as IAppData;
     }
 }
 
-export default LocalStorage
+export default LocalStorage;

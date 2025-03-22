@@ -1,1 +1,1 @@
-export type createGroup = (name: string, order:number) => void
+export type createGroup = (name: string, order: number) => void;

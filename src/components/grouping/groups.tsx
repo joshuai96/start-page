@@ -5,7 +5,7 @@ import { List, ListItem } from '@mui/material';
 import { Add } from '@mui/icons-material';
 import NewGroupDialog from './newGroupDialog';
 import { useTranslation } from 'react-i18next';
-import { useState, useCallback } from 'react'
+import { useState, useCallback } from 'react';
 import { createGroup } from './functions';
 
 interface IProps {
@@ -31,20 +31,18 @@ function Groups(props: IProps) {
     return (
         <>
             <List>
-                {
-                    groups.map((group) => {
-                        return (
-                            <ListItem key = { group.order }>
-                                <Group
-                                    key = { group.name.toLowerCase() }
-                                    links = { group.links }
-                                    name = { group.name }
-                                    order = { group.order }
-                                />
-                            </ListItem>
-                        );
-                    })
-                }
+                {groups.map((group) => {
+                    return (
+                        <ListItem key = { group.order }>
+                            <Group
+                                key = { group.name.toLowerCase() }
+                                links = { group.links }
+                                name = { group.name }
+                                order = { group.order }
+                            />
+                        </ListItem>
+                    );
+                })}
 
                 {groups.length > 0 && <Divider />}
 
@@ -52,12 +50,11 @@ function Groups(props: IProps) {
                     <Button
                         onClick = { onOpenDialog }
                         startIcon = { <Add /> }
-                        variant = 'contained'
+                        variant = "contained"
                     >
                         {t('groups.add')}
                     </Button>
                 </ListItem>
-
             </List>
 
             <NewGroupDialog

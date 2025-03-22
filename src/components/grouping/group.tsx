@@ -14,7 +14,7 @@ type IProps = IGroup;
 
 const useStyles = makeStyles()(() => ({
     groupAccordion: {
-        width: '100%'
+        width: '100%',
     },
     groupStack: {
         flexWrap: 'wrap',

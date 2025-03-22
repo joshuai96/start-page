@@ -42,7 +42,7 @@ export default tseslint.config(
             "react/jsx-max-depth": "off",
             "react/forbid-component-props": "off",
             "react/jsx-equals-spacing": [2, "always"],
-            "react/jsx-curly-spacing": [2 , {"when": "always"}],
+            "react/jsx-curly-spacing": [2, { when: "always" }],
             ...reactHooks.configs.recommended.rules,
             "react-refresh/only-export-components": [
                 "warn",
