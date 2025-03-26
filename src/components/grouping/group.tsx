@@ -52,11 +52,11 @@ function Group(props: IProps) {
                     useFlexGap
                 >
                     {links.map((link) => {
-                        const linkName = link.name.toLowerCase();
                         return (
                             <Link
                                 icon = { link.icon }
-                                key = { `${groupName}-${linkName}` }
+                                id = { link.id }
+                                key = { link.id }
                                 name = { link.name }
                                 order = { link.order }
                                 url = { link.url }

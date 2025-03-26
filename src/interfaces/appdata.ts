@@ -4,6 +4,7 @@ export interface IMeta {
 }
 
 export interface ILink {
+    id: string;
     name: string;
     order: number;
     url: string;
@@ -11,6 +12,7 @@ export interface ILink {
 }
 
 export interface IGroup {
+    id: string;
     name: string;
     order: number;
     links: ILink[];

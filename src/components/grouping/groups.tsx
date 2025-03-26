@@ -33,9 +33,9 @@ function Groups(props: IProps) {
             <List>
                 {groups.map((group) => {
                     return (
-                        <ListItem key = { group.order }>
+                        <ListItem key = { group.id }>
                             <Group
-                                key = { group.name.toLowerCase() }
+                                id = { group.id }
                                 links = { group.links }
                                 name = { group.name }
                                 order = { group.order }
