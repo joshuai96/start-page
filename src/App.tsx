@@ -24,9 +24,10 @@ import {
     nord8,
     nord9,
 } from './modules/nord';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import LocalStorage from './modules/local-storage';
 import { init as i18nInit } from './modules/i18n';
+import { createGroupFactory } from './components/grouping/functions';
 
 const nord = createTheme({
     palette: {
@@ -78,9 +79,7 @@ const useStyles = makeStyles()(() => ({
 }));
 
 function App() {
-    const localStorage = new LocalStorage();
-    i18nInit();
-
+    const localStorage = useMemo(() => new LocalStorage(), []);
     const { classes } = useStyles();
     const [state, setState] = useState(localStorage.load());
 
@@ -88,18 +87,11 @@ function App() {
         document.title = state.meta.title;
     });
 
-    const createGroup = useCallback(
-        (name: string, order: number) => {
-            const newState = state;
-            newState.data.groups.push({
-                name: name,
-                order: order,
-                links: [],
-            });
-            setState(newState);
-        },
-        [state, setState],
-    );
+    i18nInit();
+
+    useEffect(() => {
+        localStorage.save(state);
+    }, [ localStorage, state ]);
 
     return (
         <ThemeProvider theme = { nord }>
@@ -127,7 +119,7 @@ function App() {
                 maxWidth = "xl"
             >
                 <Groups
-                    createGroup = { createGroup }
+                    createGroup = { createGroupFactory(state, setState) }
                     groups = { state.data.groups }
                 />
             </Container>
